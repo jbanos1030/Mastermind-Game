@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Mind Game</title>
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container"></div>
+        <h2 class="heading">Numerical Master Mind</h2>
+        <div class="cards">
+            <div class="card" number="one">
+                <img src="number 1 gif.gif" alt="" />
+            </div>
+            <div class="card" number="two">
+                <img src="number 2.gif" alt="" />
+            </div>
+            <div class="card" number="three">
+                <img src="number 3.gif" alt="" />
+            </div>
+            <div class="card" number="four">
+                <img src="number 4.gif" alt="" />
+            </div>
+            <div class="card" number="five">
+                <img src="number 5.gif" alt="" />
+            </div>
+            <div class="card" number="six">
+                <img src="number 6.gif" alt="" />
+            </div>
+            <div class="card" number="seven">
+                <img src="number 7.gif" alt="" />
+            </div>
+            <div class="card" number="eight">
+                <img src="number 8.gif" alt="" />
+         </div>
+     </div>
+<div>
+       <script>
+        let counter = 0;
+        let firstSelection= "";
+        let secondSelection="";
+
+        const cards = document.querySelectorAll(".cards .card");
+        cards.forEach(card => {
+            card.addEventListener("click", () => {
+                card.classList.add("clicked");
+
+                if(counter === 0) {
+                    firstSelection = card.getAttribute("number");
+                    counter++;
+                } else {
+                    secondSelection = card.getAttribute("number");
+                    counter = 0;
+
+                if(firstSelection === secondSelection) {
+                    const correctCards = document.querySelectorAll(
+                        ".card[number='" + firstSelection + "']"
+                    );
+                    correctCards[0].classList.add("checked")
+                    correctCards[0].classList.remove("clicked")
+                    correctCards[1].classList.add("checked")
+                    correctCards[1].classList.remove("clicked")
+                } else {
+                    const incorrectCards = document.querySelectorAll(".card.clicker");
+
+                    incorrectCards[0].classList.add("shake");
+                    incorrectCards[1].classList.add("shake");
+                }
+                }
+                });     
+            });
+
+            
+       </script>
+</body>
+</html>
